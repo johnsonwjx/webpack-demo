@@ -1,0 +1,11 @@
+.content {
+  width: 80%;
+  margin: 0 auto; }
+  .content .panel {
+    border: 1px solid #eee;
+    background: #fafafa;
+    padding: 10px; }
+    .content .panel .pure-table {
+      width: 30%; }
+
+/*# sourceMappingURL=list-edit.css.map */

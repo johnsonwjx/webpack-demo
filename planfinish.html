@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>计划完成通报</title>
+        <link rel="stylesheet" href="dist/css/planfinish.css">
+        <style type="text/css" media="print">
+            @page {
+                size: landscape;
+            }
+            .pageStart {
+                page-break-before: always;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="layout">
+            <!-- Menu toggle -->
+            <a href="#menu" id="menuLink" class="menu-link">
+                <!-- Hamburger icon -->
+                <span></span>
+            </a>
+            <div id="menu">
+                <div class="pure-menu">
+                    <div class="pure-menu-heading">
+                        <span id="time"></span>
+                        <button id="time-edit-btn" class="pure-button button-xsmall pure-button-primary ">修改日期</button>
+                    </div>
+                    <div class="pure-menu-heading">
+                        <button id="print" class="pure-button pure-button-primary button-xsmall">打印</button>
+                    </div>
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-heading">计划完成通报</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="content">
+                <div id="dataContent"></div>
+                <div id="foot"></div>
+            </div>
+        </div>
+        <script src="dist/js/common.js"></script>
+        <script src="dist/js/planfinish.js"></script>
+    </body>
+</html>

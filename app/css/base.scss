@@ -1,0 +1,275 @@
+$menu-width: 220px;
+$menu-backgroud: #38548A;
+$menu-backgroudHover: #7C95C5;
+$menuFontColor: rgb(243,243,243);
+$buttonColor: #5B7EBD;
+$buttonBorderRadius: 5px;
+#layout,
+#menu,
+.menu-link {
+    /*
+Add transition to containers so they can push in and out.
+*/
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    padding-left: 0;
+    &.active #menu {
+        left: $menu-width;
+        width: $menu-width;
+    }
+    &.active .menu-link {
+        left: $menu-width;
+    }
+}
+/*
+The content `<div>` is where all your content goes.
+*/
+.content {
+    max-width: 1200px;
+    line-height: 1.6em;
+    h5.content-subhead {
+        margin-bottom: 5px;
+    }
+}
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+#menu {
+    margin-left: - $menu-width;
+    /* "#menu" width */
+    width: $menu-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    /* so the menu or its navicon stays above all content */
+    background: $menu-backgroud;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    a {
+        /*
+   All anchors inside the menu should be styled like this.
+   */
+        color: $menuFontColor;
+        border: none;
+        padding: 0.6em 0 0.6em 3.6em;
+    }
+    .pure-menu {
+        &,
+        ul {
+            /*
+   Remove all background/borders, since we are applying them to #menu.
+   */
+            border: none;
+            background: transparent;
+        }
+        .menu-item-divided,
+        ul {
+            /*
+Add that light border to separate items into groups.
+*/
+            border-top: 1px solid #333;
+        }
+        li a:focus:not(.pure-menu-selected),
+        li a:hover:not(.pure-menu-selected) {
+            /*
+Change color of the anchor links on hover/focus.
+*/
+            background: $menu-backgroudHover;
+        }
+    }
+    .pure-menu-selected {
+        /*
+       This styles the selected menu item `<li>`.
+       */
+        background: #1f8dd6;
+    }
+    .pure-menu-selected a {
+        /*
+    This styles a link within a selected menu item `<li>`.
+    */
+        color: #fff;
+    }
+    .pure-menu-heading {
+        /*
+This styles the menu heading.
+*/
+        font-size: 110%;
+        color: #fff;
+        margin: 0;
+    }
+}
+.menu-link {
+    position: fixed;
+    display: block;
+    /* show this only on small screens */
+    top: 0;
+    left: 0;
+    /* "#menu width" */
+    background: #000;
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 10px;
+    /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 2em;
+    height: auto;
+    padding: 2.1em 1.6em;
+    span {
+        position: relative;
+        display: block;
+        &,
+        &:after,
+        &:before {
+            background-color: #fff;
+            width: 100%;
+            height: 0.2em;
+        }
+        &:after,
+        &:before {
+            position: absolute;
+            margin-top: -0.6em;
+            content: " ";
+        }
+        &:after {
+            margin-top: 0.6em;
+        }
+    }
+}
+@mixin mygrid-td {
+    border: 1px solid #000;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 1px 0;
+    line-height: 20px;
+}
+.mygrid {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    margin: 0;
+    font-size: 11px;
+    color: #000;
+    width: 100%;
+    tbody {
+        height: 100%;
+        text-align: left;
+        td {
+            @include mygrid-td;
+            padding-left: 5px;
+        }
+    }
+    thead {
+        text-align: center;
+        th {
+            @include mygrid-td;
+            background-color: #DFF1FF;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+}
+.pure-button {
+    background: $buttonColor;
+    border-radius: $buttonBorderRadius;
+}
+.button-xxsmall {
+    font-size: 65%;
+}
+.button-xsmall {
+    font-size: 70%;
+}
+.button-small {
+    font-size: 85%;
+}
+.button-large {
+    font-size: 110%;
+}
+.button-xlarge {
+    font-size: 125%;
+}
+.button-error,
+.button-secondary,
+.button-success,
+.button-warning {
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+.button-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+.button-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+.button-secondary {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}
+#page-editor {
+    margin: 10px;
+}
+#page-editor-bar {
+    margin-bottom: 5px;
+}
+span.left-title {
+    display: -moz-inline-box;
+    display: inline-block;
+    width: 150px;
+}
+.modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #888;
+        border-radius: 8px;
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            &:hover,
+            &focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        .modal-center {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .modal-foot {
+            text-align: center;
+            padding-top: 10px;
+            .cancel {
+                margin-left: 30px;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@import "base";
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+    .content,
+    .header {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+    #layout {
+        padding-left: $menu-width;
+        /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: $menu-width;
+    }
+    .menu-link {
+        position: fixed;
+        left: $menu-width;
+        display: none;
+    }
+    #layout.active .menu-link {
+        left: $menu-width;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #layout.active {
+        position: relative;
+        left: $menu-width;
+    }
+}

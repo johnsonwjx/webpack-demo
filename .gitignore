@@ -1,0 +1,8 @@
+.cvs*
+.tag*
+**/CVS
+datas
+dist
+node_modules
+
+

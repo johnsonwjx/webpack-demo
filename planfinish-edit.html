@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>计划完成通报-编辑</title>
+        <link rel="stylesheet" href="dist/css/planfinish-edit.css">
+    </head>
+    <body>
+        <div id="layout">
+            <!-- Menu toggle -->
+            <a href="#menu" id="menuLink" class="menu-link">
+                <!-- Hamburger icon -->
+                <span></span>
+            </a>
+            <div id="menu">
+                <div class="pure-menu">
+                    <div class="pure-menu-heading">
+                        <span id="time"></span>
+                        <button id="time-edit-btn" class="pure-button button-xsmall pure-button-primary ">修改日期</button>
+                    </div>
+                    <div class="pure-menu-heading">
+                        <button id="publish" class="pure-button button-success button-xsmall">发布</button>
+                        <button id="save" class="pure-button pure-button-primary button-xsmall">暂存</button>
+                        <button id="reset" class="pure-button button-warning button-xsmall">清空</button>
+                    </div>
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-heading">计划完成通报</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div id="dataContent"></div>
+                <div id="foot"></div>
+            </div>
+        </div>
+        <script src="dist/js/common.js"></script>
+        <script src="dist/js/planfinish-edit.js"></script>
+    </body>
+</html>
