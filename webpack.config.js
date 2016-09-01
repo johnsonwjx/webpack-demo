@@ -7,7 +7,6 @@ var
 
 module.exports = {
     entry: {
-        "list-edit": src + "/edit/list.js",
         "plan": src + "/plan/runtime.js",
         "plan-edit": src + '/plan/edit.js',
         "planfinish": src + "/planfinish/runtime.js",

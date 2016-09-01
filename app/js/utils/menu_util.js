@@ -1,6 +1,8 @@
 var
-    commonUtil = require('js/common/commonUtil'),
+    commonUtil = require('./common_util'),
     menuSelectClass = 'pure-menu-selected',
+    templateUtil = require('./template_util'),
+    menuRender,
     planMenus = [{
         "name": "establishment",
         "text": "编制说明"
@@ -42,8 +44,7 @@ var
         "name": "loadDepartmentBenifit2",
         "text": "考勤表二"
     }],
-    templateData = require('./templateData'),
-    menuRender,
+
     menuSelect = function($menu) {
         $('.' + menuSelectClass).blur();
         $('.' + menuSelectClass).removeClass(menuSelectClass);
@@ -54,7 +55,7 @@ var
 
     createMenu = function(menus, id) {
         if (!menuRender) {
-            menuRender = templateData.compileFile('menu-item');
+            menuRender = templateUtil.compileFile('menu-item');
         }
         $(id).append(menuRender({
             list: menus

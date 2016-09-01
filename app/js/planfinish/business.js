@@ -1,14 +1,11 @@
 var
-    domUtil = require('js/common/domUtil'),
-    menuObj = require('js/common/menuObj'),
-    dataModel = require('js/common/dataModel'),
-    pageEdit = require('js/edit/pageEdit'),
+    domUtil = require('js/utils/dom_util'),
+    menuUtil = require('js/utils/menu_util'),
+    dataModel = require('js/utils/dataModel'),
     initDom = function($dataContent, editFlag, allDatas, year, month) {
-        var menus = menuObj.planFinishedMenus,
+        var menus = menuUtil.planFinishedMenus,
             pageSize = 28,
             id, $table, $tablebody, title;
-
-        if (!editFlag) pageEdit.initPageEditor($dataContent);
         domUtil.generateDomByNameArr(menus[0].name, $dataContent, allDatas, ['power_finish', 'reliable_finish'], pageSize, !editFlag);
 
         if (!editFlag) domUtil.addPrintPageStart($dataContent);
@@ -27,8 +24,8 @@ var
         }
 
         if (!editFlag) domUtil.addPrintPageStart($dataContent);
-        id = 'analyze';
-        domUtil.initData2Dom(allDatas, id, $dataContent, editFlag);
+        id = menus[3].name;
+        domUtil.initData2Dom(allDatas, id, menus[3].text, $dataContent);
 
         if (!editFlag) domUtil.addPrintPageStart($dataContent);
         title = $('<h2>').text('部门效益奖考核表 (' + year + '年' + month + '月)').css('textAlign', 'center');
@@ -39,22 +36,15 @@ var
         title = $('<h2>').text('部门效益奖考核表 (' + year + '年' + month + '月)').css('textAlign', 'center');
         domUtil.generateDomByName(menus[5].name, $dataContent, allDatas, 'departmentbenifitmanager_finish', pageSize, !editFlag);
         $('#' + menus[5].name).prepend(title);
-    },
-    initIdDatas = function(allDatas) {
-        var
-            id = 'analyze',
-            name = '主要指标完成情况分析';
-        if (!allDatas.analyze) dataModel.createIdContendData(allDatas, id, name ,'<h2 style="text-align: center">' + name + '</h2>');
     };
 var business = {
     type: 'planfinish',
     initDom: initDom,
     editFileName: 'edit-planfinish',
     publishFileName: 'publish-planfinish',
-    createMenu: menuObj.createPlanFinishMenu,
+    createMenu: menuUtil.createPlanFinishMenu,
     getInitMonth: function(date) {
         return date.getMonth();
-    },
-    initIdDatas: initIdDatas
+    }
 };
 module.exports = business;

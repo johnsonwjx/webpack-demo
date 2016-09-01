@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,QAAS;EACL,KAAK,EAFF,GAAG;EAGN,MAAM,EAAE,MAAM;EACd,eAAO;IACH,MAAM,EAAE,cAAc;IACtB,UAAU,EAAE,OAAkB;IAC9B,OAAO,EAAE,IAAI;IACb,2BAAY;MACR,KAAK,EAAE,GAAe",
-"sources": ["list-edit.scss"],
-"names": [],
-"file": "list-edit.css"
-}

@@ -193,6 +193,13 @@ This styles the menu heading.
   background: #42b8dd;
   /* this is a light blue */ }
 
+.page-container {
+  width: 1010px; }
+  .page-container .title {
+    text-align: center; }
+  .page-container .page-btn {
+    margin-top: 10px; }
+
 #page-editor {
   margin: 10px; }
 

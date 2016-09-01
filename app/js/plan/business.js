@@ -1,18 +1,15 @@
 var
-    domUtil = require('js/common/domUtil'),
-    menuObj = require('js/common/menuObj'),
-    dataModel = require('js/common/dataModel'),
+    domUtil = require('js/utils/dom_util'),
+    menuUtil = require('js/utils/menu_util'),
+    dataModel = require('js/utils/dataModel'),
 
     initDom = function($dataContent, editFlag, allDatas, year, month) {
-        var menus = menuObj.planMenus,
+        var menus = menuUtil.planMenus,
             pageSize = 28,
-            id, data, opt;
-        id = 'establishment';
-        domUtil.initData2Dom(allDatas, id, $dataContent, editFlag);
-
+            data, opt;
+        domUtil.initData2Dom(allDatas, menus[0].name, menus[0].text, $dataContent);
         if (!editFlag) domUtil.addPrintPageStart($dataContent);
-        id = 'emphasiswork';
-        domUtil.initData2Dom(allDatas, id, $dataContent, editFlag);
+        domUtil.initData2Dom(allDatas, menus[1].name, menus[1].text, $dataContent);
 
         if (!editFlag) domUtil.addPrintPageStart($dataContent);
         domUtil.generateDomByNameArr(menus[2].name, $dataContent, allDatas, ['power', 'reliable', 'economic1'], pageSize, !editFlag);
@@ -30,20 +27,21 @@ var
         domUtil.generateDomByName(menus[6].name, $dataContent, allDatas, 'life', pageSize, !editFlag);
     },
     initIdDatas = function(allDatas) {
-        var
-            id = 'establishment',
-            name = '编制说明';
-        if (!allDatas[id]) dataModel.createIdContendData(allDatas, id, name, '<h2 style="text-align: center">' + name + '</h2>');
-        id = "emphasiswork";
-        name = '重点工作';
-        if (!allDatas[id]) dataModel.createIdContendData(allDatas, id, name, '<h2 style="text-align: center">' + name + '</h2>');
+        // var
+        //     menus = menuUtil.planMenus,
+        //     id = menus[0].name,
+        //     name = menus[0].text;
+        // if (!allDatas[id]) dataModel.createIdContendData(allDatas, id, name, '<h2 style="text-align: center">' + name + '</h2>');
+        // id = menus[1].name;
+        // name = menus[1].text;
+        // if (!allDatas[id]) dataModel.createIdContendData(allDatas, id, name, '<h2 style="text-align: center">' + name + '</h2>');
     };
 var business = {
     type: 'plan',
     initDom: initDom,
     editFileName: 'edit-plan',
     publishFileName: 'publish-plan',
-    createMenu: menuObj.createPlanMenu,
+    createMenu: menuUtil.createPlanMenu,
     getInitMonth: function(date) {
         return date.getMonth() + 2;
     },

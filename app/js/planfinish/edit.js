@@ -1,13 +1,14 @@
 var
-    commonUtil = require('js/common/commonUtil'),
-    loadObj = require('js/common/loadObj'),
+    commonUtil = require('js/utils/common_util'),
+    loadUtil = require('js/utils/load_util'),
     business = require('js/planfinish/business'),
-    util = require('js/edit/util'),
-    pageEdit = require('js/edit/pageEdit'),
+    util = require('js/utils/edit/edit_util'),
+    pageEdit = require('js/utils/edit/page_edit'),
     editflag = true;
 $(function() {
     commonUtil.init();
-    loadObj.init(editflag, business);
-    util.init(loadObj, business);
+    loadUtil.init(editflag, business);
+    util.init(loadUtil, business);
     pageEdit.initPageEditor(commonUtil.$dataContent);
+    loadUtil.addPageEditor(pageEdit);
 });

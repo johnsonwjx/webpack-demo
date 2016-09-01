@@ -1,7 +1,7 @@
 var
     template = require("art-template"),
     dataModel = require('./dataModel'),
-    templateFiles = ['template1', "template2", 'template3', "template4", "template5", 'template6', 'template7', 'template8'],
+    templateFiles = ['template1', "template2", 'template3', "template4", "template5", 'template6', 'template7', 'template8', 'page-edit-container'],
     templateObj;
 
 var createContentTemplate = function(fields) {

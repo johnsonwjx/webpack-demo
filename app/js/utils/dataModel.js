@@ -158,7 +158,12 @@ var
         'departmentbenifitproduct_finish': {
             title: '(一)生产系统',
             template: 'template7',
-            fields: 'fields7'
+            fields: 'fields7',
+            editorColumns: {
+                2: '',
+                3: '',
+                4: ''
+            }
         },
         'departmentbenifitlife_finish': {
             title: '(二)生活后勤系统',

@@ -3,7 +3,7 @@ require('quill/dist/quill.snow.css');
 var
     loadObj,
     business,
-    commonUtil = require('js/common/commonUtil'),
+    commonUtil = require('../common_util'),
     rootpath = commonUtil.rootpath,
     init = function(loadObjTemp, businessTemp) {
         loadObj = loadObjTemp;

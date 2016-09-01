@@ -1,7 +1,6 @@
 var
-    templateData = require('./templateData'),
+    templateUtil = require('./template_util'),
     dataModel = require('./dataModel'),
-    pageEdit = require('js/edit/pageEdit'),
     colspanTableContent = function($tablebody, spans) {
         if (!spans) {
             return;
@@ -86,8 +85,8 @@ var
         var
             opt = dataModel.getOpt(name),
             records,
-            tableRender = templateData.getTemplate(opt.template),
-            contentRender = templateData.getTemplate(opt.fields),
+            tableRender = templateUtil.getTemplate(opt.template),
+            contentRender = templateUtil.getTemplate(opt.fields),
             total, pages, spans,
             mutiPage = false,
             pageRecords, $table;
@@ -132,12 +131,13 @@ var
         });
         return $table;
     },
-    initData2Dom = function(allDatas, id, $container, editFlag) {
-        $('<div id="' + id + '" style="width: 1010px;"><div class="id-content"></div></div>').appendTo($container);
+    initData2Dom = function(allDatas, id, title, $container) {
+        var render = templateUtil.getTemplate('page-edit-container');
         var data = allDatas[id];
-        if (editFlag) {
-            pageEdit.addPageEditor(data, id, this);
-        }
+        $container.append(render({
+            id: id,
+            title: title
+        }));
         setData2Dom(data, $container);
     },
     setData2Dom = function(data, $container) {

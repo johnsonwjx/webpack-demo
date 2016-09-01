@@ -71,10 +71,35 @@ var
     relogin = function() {
         window.open("login.do?action=relogin", "_top");
     };
+
+function getIEVersion() {
+    var rv = -1; // Return value assumes failure.
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+        var ua = navigator.userAgent;
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua))
+            rv = parseFloat(RegExp.$1);
+    }
+    return rv;
+}
+
+function maxWindow() {
+    window.moveTo(0, 0);
+    if (document.all) {
+        top.window.resizeTo(screen.availWidth, screen.availHeight);
+    } else if (document.layers || document.getElementById) {
+        if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
+            top.window.outerHeight = screen.availHeight;
+            top.window.outerWidth = screen.availWidth;
+        }
+    }
+}
 module.exports = {
     rootpath: rootpath,
     throttle: throttle,
     init: init,
     changeFootHeight: changeFootHeight,
-    handleError: handleError
+    handleError: handleError,
+    getIEVersion: getIEVersion,
+    maxWindow: maxWindow
 };

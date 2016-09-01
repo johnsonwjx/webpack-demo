@@ -1,5 +1,5 @@
 var
-    templateData = require('./templateData'),
+    templateUtil = require('./template_util'),
     $timeEdit,
     yearReg = /199[0-9]|2[0-1][0-9]{2}/,
     $year,
@@ -16,13 +16,13 @@ var
         }
         $year.val(year);
         $month.val(month);
-        $timeEdit.removeAttr('hidden');
+        $timeEdit.css('display', 'block');
         open = true;
     },
     closeTimeSelect = function() {
         $year.val('');
         $month.val('');
-        $timeEdit.attr('hidden', 'true');
+        $timeEdit.css('display', 'none');
         open = false;
     },
     validate = function() {
@@ -35,7 +35,7 @@ var
         return true;
     },
     init = function($container, func) {
-        $container.after(templateData.templateFile('timeChange'));
+        $container.after(templateUtil.templateFile('timeChange'));
         $timeEdit = $('#time-edit');
         $year = $('#year-edit');
         $month = $('#month-edit');

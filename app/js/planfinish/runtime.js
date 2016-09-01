@@ -1,11 +1,11 @@
 var
-    commonUtil = require('js/common/commonUtil'),
-    loadObj = require('js/common/loadObj'),
+    commonUtil = require('js/utils/common_util'),
+    loadUtil = require('js/utils/load_util'),
+    runtimeUtil = require('js/utils/runtime/runtime_util'),
     business = require('js/planfinish/business'),
-    util = require('js/runtime/util'),
     editflag = false;
 $(function() {
     commonUtil.init();
-    loadObj.init(editflag, business);
-    util.init(commonUtil.$dataContent);
+    loadUtil.init(editflag, business);
+    runtimeUtil.init(commonUtil.$dataContent);
 });
