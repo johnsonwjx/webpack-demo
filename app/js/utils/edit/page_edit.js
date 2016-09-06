@@ -6,12 +6,20 @@ var
     loadUtil = require('../load_util'),
     $pageEditor,
     $pageEditorContainer,
-    $container,
+    $dataContent,
     curentId;
 
 function clear() {
     $pageEditorContainer.html('');
     if ($pageEditor) $pageEditor.attr('hidden', 'true;');
+}
+
+/**
+ * [reset 放回dataContent以外的位置 防止clear dataContent 时清空了]
+ */
+function reset() {
+    clear();
+    $dataContent.after($pageEditor);
 }
 
 function pageSave() {
@@ -22,7 +30,7 @@ function pageSave() {
         allDatas[curentId] = curentData;
     }
     dataModel.setIdFieldData(curentData, curentId, $pageEditorContainer.html());
-    domUtil.setData2Dom(curentData, $container);
+    domUtil.setData2Dom(curentData, $dataContent);
     clear();
 }
 
@@ -33,9 +41,9 @@ function edit(id, htmldata, $ele) {
     $pageEditor.removeAttr('hidden');
 }
 
-function initPageEditor($dataContent) {
-    $container = $dataContent;
-    $container.after(templateUtil.templateFile('page-edit'));
+function initPageEditor($dataContentTemp) {
+    $dataContent = $dataContentTemp;
+    $dataContent.after(templateUtil.templateFile('page-edit'));
     $pageEditor = $('#page-editor');
     new Quill('#editor-container', {
         modules: {
@@ -46,26 +54,28 @@ function initPageEditor($dataContent) {
     });
     $pageEditorContainer = $pageEditor.find('.ql-editor');
     $('#page-save').click(pageSave);
-    $('#page-cancel').on('click', clear);
-
+    $('#page-cancel').click(clear);
 }
 /**
  * [addEditBtn2PageContainer ]
  */
 function addEditBtn2PageContainer() {
-    var $pageContainer = $('.page-container'),
-        id = $pageContainer.attr('id');
-    $('<button pageid="' + id + '" class="pure-button pure-button-primary  button-xsmall">编辑</button>').prependTo($pageContainer).on('click', function() {
+    var btnEditEvent = function() {
         var $btn = $(this),
             pageId = $btn.attr('pageId'),
             data = $btn.siblings('.id-content').html();
         edit(pageId, data, $btn);
         $btn.after($pageEditor);
         $pageEditor.removeAttr('hidden');
+    };
+    $('.page-container').each(function(index, item) {
+        var id = this.id;
+        $('<button pageid="' + id + '" class="pure-button pure-button-primary  button-xsmall">编辑</button>').prependTo(this).on('click', btnEditEvent);
     });
-
 }
+
 module.exports = {
     initPageEditor: initPageEditor,
-    addEditBtn2PageContainer: addEditBtn2PageContainer
+    addEditBtn2PageContainer: addEditBtn2PageContainer,
+    reset: reset
 };

@@ -194,7 +194,8 @@ This styles the menu heading.
   /* this is a light blue */ }
 
 .page-container {
-  width: 1010px; }
+  width: 1010px;
+  line-height: 0.9em; }
   .page-container .title {
     text-align: center; }
   .page-container .page-btn {

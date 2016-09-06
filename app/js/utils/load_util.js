@@ -39,6 +39,9 @@ function before() {
     year = null;
     month = null;
     $(document).off('scroll');
+    if (pageEditor) {
+        pageEditor.reset();
+    }
     commonUtil.$dataContent.empty();
     menuUtil.menuSelect(null);
 }
@@ -125,7 +128,6 @@ function finishLoadData(responseData, y, m) {
     } else {
         commonUtil.maxWindow();
     }
-
     $('.pure-menu-item:first>a').trigger('click');
 }
 
